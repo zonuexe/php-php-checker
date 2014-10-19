@@ -1,5 +1,5 @@
-PHP Parser
-==========
+Simple PHP Checker
+==================
 
 [![Build Status](https://travis-ci.org/zonuexe/php-php-checker.svg?branch=master)](https://travis-ci.org/zonuexe/php-php-checker)
 [![Downloads this Month](https://img.shields.io/packagist/dm/zonuexe/php-checker.svg)](https://packagist.org/packages/zonuexe/php-checker)
