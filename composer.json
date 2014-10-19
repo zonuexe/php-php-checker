@@ -1,0 +1,31 @@
+{
+    "name": "zonuexe/php-checker",
+    "description": "Simple PHP checker",
+    "license": "MIT",
+    "version": "0.0.1",
+    "authors": [
+        {
+            "name": "USAMI Kenta",
+            "email": "tadsan@zonu.me"
+        }
+    ],
+    "require": {
+	"nikic/php-parser": "1.0.*"
+    },
+    "require-dev": {
+        "theseer/phpdox":   "0.6.*"
+	,"phpmd/phpmd":     "@stable"
+        ,"phploc/phploc":   "*"
+        ,"phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Teto\\PHPChecker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Teto\\PHPChecker\\": "tests/"
+        }
+    }
+}
