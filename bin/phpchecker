@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Simple PHP checker
+ *
+ * @package   Teto\PHPChecker*
+ * @copyright Copyright (c) 2014 USAMI Kenta
+ * @author    USAMI Kenta <tadsan@zonu.me>
+ * @license   MIT License
+ */
+namespace Teto\PHPChecker;
+
+include_once __DIR__ . '/../vendor/autoload.php';
+
+call_user_func(
+    function () {
+        $cli = new CLI;
+        $cli->exec('check_dir', [
+                'namespace' => $_SERVER['argv'][1],
+                'base_dir'  => $_SERVER['argv'][2],
+            ]);
+    }
+);
