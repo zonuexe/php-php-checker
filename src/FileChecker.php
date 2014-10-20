@@ -75,8 +75,8 @@ class FileChecker
         $actual   = implode('\\', $namespace->name->parts);
         
         if ($expected !== $actual) {
-            $msg = "Expected namespace is $expected, but $actual .";
-            throw new Exception\NamespaceError($msg, $this->file);
+            $msg = "Expected namespace is $expected, but $actual. (in {$this->path})";
+            throw new Exception\NamespaceError($msg);
         }
 
         return $this;
