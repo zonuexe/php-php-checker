@@ -58,7 +58,8 @@ class FileChecker
         }
 
         if (empty($this->file->parsed[0]) || !($this->file->parsed[0] instanceof PhpParser\Node\Stmt\Namespace_)) {
-            throw new \UnexpectedValueException;
+            $msg = "This file doesn't have Namespace (in {$this->path})";
+            throw new Exception\NamespaceError($msg);
         }
 
         $namespace = $this->file->parsed[0];
@@ -85,6 +86,13 @@ class FileChecker
     public function hasNClasses($num)
     {
         $classes = [];
+
+        if (empty($this->file->parsed[0]) || empty($this->file->parsed[0]->stmts)) {
+            if ($num === 0) { return; }
+
+            $msg = "This file doesn't have any class. (in {$this->path})";
+            throw new Exception\ClassError($msg);
+        }
         
         foreach ($this->file->parsed[0]->stmts as $stmt) {
             if (false
@@ -97,10 +105,21 @@ class FileChecker
         }
 
         if ($num != count($classes)) {
-            throw new Exception\ClassError($this->file);
+            $actual = count($classes);
+            $msg = "Expects $num classes, but this file has $actual classes (in {$this->path})";
+            throw new Exception\ClassError();
         }
 
         return $this;
+    }
+
+    public function hasNoInline()
+    {
+        foreach ($this->file->parsed as $stmt) {
+            if ($stmt instanceof PhpParser\Node\Stmt\InlineHTML) {
+                throw new Exception\InlineExistsError;
+            }
+        }
     }
 
     public static function checkRecursive(\SplFileInfo $file_info, $namespace, $base_dir)
