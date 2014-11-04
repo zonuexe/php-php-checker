@@ -2,7 +2,6 @@
     "name": "zonuexe/php-checker",
     "description": "Simple PHP checker",
     "license": "MIT",
-    "version": "0.0.1",
     "authors": [
         {
             "name": "USAMI Kenta",
