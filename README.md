@@ -15,6 +15,26 @@ Requirements
 * PHP (5.4+)
   * `ext/tokenizer`
 
+Install
+-------
+
+### Composer
+
+```
+# Project local (dev)
+$ composer require --dev zonuexe/php-checker
+
+# Global install
+$ composer g require zonuexe/php-checker
+```
+
+Usage
+-----
+
+```
+$ ./bin/phpchecker Teto\\PHPChecker src/
+```
+
 Copyright
 ---------
 

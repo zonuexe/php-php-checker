@@ -5,6 +5,7 @@ bin = File.join(dir, '/vendor/bin')
 
 composer = "#{bin}/composer.phar"
 phpunit  = "#{bin}/phpunit"
+phpchecker = "#{dir}/bin/phpchecker"
 
 report = "#{dir}/report"
 report_coverage = "#{report}/coverage"
@@ -32,6 +33,10 @@ task :test do
   end
 
   Rake::Task[t].invoke
+end
+
+task :check do
+  sh "#{phpchecker} Teto\\\\PHPChecker ./src"
 end
 
 namespace :test do

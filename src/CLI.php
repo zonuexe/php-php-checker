@@ -22,21 +22,23 @@ class CLI
 
     public function check_dir(array $params = [])
     {
-        $params = $params + [
+        static $default = [
             'namespace' => '',
             'base_dir'  => '',
         ];
+        $params += $default;
 
         FileChecker::checkRecursive(new \SplFileInfo($params['base_dir']), $params['namespace'], $params['base_dir']);
     }
 
     public function check_file(array $params = [])
     {
-        $params = $params + [
+        static $default = [
             'path'      => '',
             'base_dir'  => '',
             'namespace' => '',
         ];
+        $params += $default;
 
         $path = realpath($params['path']);
 
