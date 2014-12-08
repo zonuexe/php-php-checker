@@ -15,6 +15,9 @@ final class NamespaceOKClassTest extends \Teto\PHPChecker\TestCase
         $this->getChecker()->requireNamespace();
     }
 
+    /**
+     * @expectedException Teto\PHPChecker\Exception\ClassError
+     */
     public function test_hasNClasses_0()
     {
         $this->getChecker()->hasNClasses(0);
