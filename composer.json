@@ -9,13 +9,13 @@
         }
     ],
     "require": {
-	"nikic/php-parser": "1.0.*"
+        "nikic/php-parser": "^1.4.1"
     },
     "require-dev": {
         "theseer/phpdox":   "0.6.*"
-	,"phpmd/phpmd":     "@stable"
+        ,"phpmd/phpmd":     "@stable"
         ,"phploc/phploc":   "*"
-        ,"phpunit/phpunit": "4.*"
+        ,"phpunit/phpunit": "^4.8.14"
     },
     "autoload": {
         "psr-4": {
@@ -28,6 +28,6 @@
         }
     },
     "bin": [
-	"bin/phpchecker"
+        "bin/phpchecker"
     ]
 }
