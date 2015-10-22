@@ -18,7 +18,7 @@ class FileChecker
 
     /** @var string */
     private $base_dir;
-    
+
     /** @var string */
     private $path;
 
@@ -28,6 +28,11 @@ class FileChecker
     /** @var PHPFile */
     private $file;
 
+    /**
+     * @param string $path
+     * @param string $namespace
+     * @param string $base_dir
+     */
     public function __construct($path, $namespace, $base_dir)
     {
         $this->path = $path;
@@ -46,7 +51,7 @@ class FileChecker
      * @throws \UnexpectedValueException The script did not use namespace
      * @throws Exception\NamespaceError
      * @return PHPChecker $this
-     */ 
+     */
     public function requireNamespace()
     {
         if (empty($this->namespace)) {
@@ -74,7 +79,7 @@ class FileChecker
 
         $expected = implode('\\', array_merge([$this->namespace], $path));
         $actual   = implode('\\', $namespace->name->parts);
-        
+
         if ($expected !== $actual) {
             $msg = "Expected namespace is $expected, but $actual. (in {$this->path})";
             throw new Exception\NamespaceError($msg);
@@ -93,7 +98,7 @@ class FileChecker
             $msg = "This file doesn't have any class. (in {$this->path})";
             throw new Exception\ClassError($msg);
         }
-        
+
         foreach ($this->file->parsed[0]->stmts as $stmt) {
             if (false
                 || $stmt instanceof PhpParser\Node\Stmt\Class_
