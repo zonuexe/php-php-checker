@@ -24,12 +24,19 @@ foreach (
 require $file;
 unset($file);
 
-call_user_func(
-    function () {
+try {
+    throw new \Exception("foo");
+    call_user_func(function () {
         $cli = new CLI;
         $cli->exec('check_dir', [
-                'namespace' => $_SERVER['argv'][1],
-                'base_dir'  => $_SERVER['argv'][2],
-            ]);
+            'namespace' => $_SERVER['argv'][1],
+            'base_dir'  => $_SERVER['argv'][2],
+        ]);
     }
-);
+    );
+} catch (\Exception $e) {
+    $stderr = fopen('php://stderr', 'w');
+    fwrite($stderr, get_class($e) . PHP_EOL);
+    fwrite($stderr, $e->getMessage() . PHP_EOL);
+    die;
+}
